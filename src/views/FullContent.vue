@@ -1,31 +1,29 @@
 <template>
+<div>
   <div class="fullContent">
-    <el-row type="flex" justify="center">
+    <el-row type="flex" justify="center" class="blog-row">
       <el-col :span="3" class="hidden-md-and-down"></el-col>
       <el-col :span="24">
-        <!-- <el-card class="main-content" shadow="never" :body-style="{ padding: '20px' }">
-            <div slot="header">
-              <span class="title">
-                <h3>
-                  第三方的飞机上大家覅技术都放假哦is阿胶佛我救死扶伤觉得覅偶就是东非奇偶数据大佛ijdsiof
-                </h3>
-              </span>
-            </div>
-            <div v-html="content"></div>
-          </el-card> -->
-        <div class="blog-title">
-          <h3>
-            第三方的飞机上大家覅技术都放假哦is阿胶佛我救死扶伤觉得覅偶就是东非奇偶数据大佛ijdsiof
-          </h3>
-        </div>
-        <el-divider></el-divider>
-        <div class="content">
-          <div v-html="content"></div>
+        <div class="blog-content">
+          <div class="blog-title">
+            <h3>
+              <span v-html="blog.title"></span>
+            </h3>
+          </div>
+          <el-divider></el-divider>
+          <div class="content">
+            <div v-html="blog.content_html"></div>
+          </div>
         </div>
       </el-col>
       <el-col :span="3" class="hidden-md-and-down"></el-col>
     </el-row>
   </div>
+  
+</div>
+
+
+
 </template>
 
 <script>
@@ -36,8 +34,21 @@ export default {
   },
   data() {
     return {
-      content: '<h2><a id="_0"></a>二级标题</h2>',
+      id: this.$route.params.id,
+      blog: {},
     };
+  },
+
+  methods: {
+    getData() {
+      this.getRequest("/blog/findById?id=" + this.id, this).then((resp) => {
+        this.blog = resp.data;
+      });
+    },
+  },
+
+  created() {
+    this.getData();
   },
 };
 </script>
@@ -47,10 +58,16 @@ export default {
   color: #008b8b;
 }
 .fullContent {
-  height: 100%;
-  background-color: white;
+  /* margin-top: -20px;
+  background-color: #f5f5f5; */
 }
+
 .main-content {
   width: 100%;
+}
+.blog-content {
+  /* border: 1px solid #F5F5F5	; */
+  padding-left: 10px;
+  background-color: white;
 }
 </style>

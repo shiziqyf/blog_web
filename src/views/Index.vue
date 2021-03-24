@@ -14,11 +14,11 @@
       </el-drawer>
     </div>
 
-    <el-aside width="200px" class="aside hidden-xs-only"
+    <el-aside width="200px" class="aside hidden-xs-only aside-layout"
       ><Header
     />
     </el-aside>
-    <el-main>
+    <el-main class="main">
       <div class="header hidden-sm-and-up" @click="isShowDriver=true">
        <i class="el-icon-s-unfold menu-icon"></i>
     </div>
@@ -48,6 +48,7 @@ export default {
 }
 .el-main {
   /* background-color: #f5f5f5; */
+  background-color: #f5f5f5
 }
 .el-header {
   margin-bottom: 8px;
@@ -66,7 +67,11 @@ export default {
   text-align: center;
   
 }
+.aside-layout {
+  border-right:8px solid white
+}
 .menu-icon {
   padding-left: 10px;
 }
+
 </style>

@@ -9,6 +9,7 @@ import FullContent from "../views/FullContent.vue"
 import Pigeonhole from "../views/Pigeonhole.vue"
 import AboutMe from "../views/AboutMe.vue"
 const newBlog = () => import('../views/admin/EditBlog.vue')
+const Login = () => import('../views/admin/Login.vue')
 // import newBlog from '../views/admin/EditBlog.vue'
 import errorPage from '../views/404.vue'
 Vue.use(VueRouter)
@@ -27,11 +28,11 @@ const routes = [
         component: Main
       },
       {
-        path: 'catalog',
+        path: 'catalog/:pageNum?',
         component: Catalog
       },
       {
-        path: 'fullContent',
+        path: 'fullContent/:id?',
         component: FullContent
       },
       {
@@ -58,11 +59,15 @@ const routes = [
       {
         path: 'newBlog',
         component: newBlog
-      }
-
-
+      },
+  
     ]
 
+  },
+
+  {
+    path: '/admin/login',
+    component: Login
   },
 
   {
@@ -81,6 +86,11 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.afterEach((to, from) => {
+  console.log("回到顶部")
+  window.scrollTo(0, 0)
 })
 
 export default router

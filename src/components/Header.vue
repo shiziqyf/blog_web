@@ -1,6 +1,6 @@
 <template>
 
-  <el-menu  :router="true" background-color="#F5F5F5" active-text-color="#6495ED"	>
+  <el-menu  :router="true" background-color="#DCDCDC" active-text-color="#6495ED"	>
     <div class="title avatar">
       <el-avatar
         :size="100"
@@ -13,10 +13,14 @@
     </div>
 
     <el-menu-item index="/index/main"><span class="item"> 首页</span></el-menu-item>
-    <el-menu-item index="/index/catalog"><span class="item"> 目录</span></el-menu-item>
+    <el-menu-item index="/index/catalog/1"><span class="item"> 目录</span></el-menu-item>
     <el-menu-item index="/index/pigeonhole"><span class="item"> 归档</span></el-menu-item>
     <el-menu-item index="/index/aboutMe"><span class="item"> 关于我</span></el-menu-item>
-    <el-menu-item index="/admin/newBlog"><span class="item"> 新博客</span></el-menu-item>
+      <div v-if="$store.state.token != null">
+         <el-menu-item index="/admin/newBlog"><span class="item"> 新博客</span></el-menu-item>
+         <el-menu-item @click="outLogin"><span class="item"> 退出登录</span></el-menu-item>
+      </div>
+   
   </el-menu>
 </template>
 
@@ -27,6 +31,18 @@ export default {
       // menuMode: "horizontal"
     };
   },
+
+  methods: {
+    outLogin() {
+      this.$store.commit('outLogin')
+      localStorage.removeItem('token')
+    }
+  },
+
+  created() {
+   console.log(this.$store.state.token)
+  }
+
 };
 </script>
 
