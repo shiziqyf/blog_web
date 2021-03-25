@@ -18,12 +18,12 @@
       ><Header
     />
     </el-aside>
-    <el-main class="main">
+    <el-main class="content-main" ref="contentLoading" v-loading="load">
      
       <div class="header hidden-sm-and-up" @click="isShowDriver=true">
        <i class="el-icon-s-unfold menu-icon" ></i>
     </div>
-      <router-view :key="$route.fullPath"></router-view>
+      <router-view :key="$route.fullPath" @changeLoad="changeLoad"></router-view>
     </el-main>
   </el-container>
 </template>
@@ -39,21 +39,31 @@ export default {
   data() {
     return {
       isShowDriver: false,
+      load: false
     };
   },
   methods: {
-     
-  }
+     changeLoad(isLoad) {
+       this.load = isLoad
+     }
+  },
+  
 };
 </script>
 
 <style>
 .main {
   height: 100%;
+  
+}
+.content-main {
+  padding-left: 7px !important;
+  padding-right: 7px !important;
 }
 .el-main {
   /* background-color: #f5f5f5; */
-  background-color: #f5f5f5
+  background-color: #f5f5f5;
+  
 }
 .el-header {
   margin-bottom: 8px;
@@ -61,7 +71,7 @@ export default {
 .header {
   padding: 8px;
   margin-bottom: 10px;
-  background-color: #F5F5F5	;
+  background-color: #DCDCDC	;
   font-size: 150%;
 }
 .drawer {

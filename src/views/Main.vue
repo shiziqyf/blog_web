@@ -4,19 +4,18 @@
       <el-row type="flex" justify="center" class="blog-row">
         <el-col :span="3" class="hidden-md-and-down"></el-col>
         <el-col :span="24">
-         
-            <div class="blog-content">
+          <div class="blog-content">
+          
               <div class="blog-title">
-                <h3>
+                <h2>
                   <span v-html="blog.title"></span>
-                </h3>
+                </h2>
               </div>
-              <el-divider></el-divider>
-              <div class="content">
-                <div v-html="blog.content_html"></div>
-              </div>
+          
+            <div class="content">
+              <mavon-editor class="content-html" v-html="blog.content_html"></mavon-editor>
             </div>
-        
+          </div>
         </el-col>
         <el-col :span="3" class="hidden-md-and-down"></el-col>
       </el-row>
@@ -24,6 +23,7 @@
   </div>
 </template>
 
+  
 <script>
 import Header from "../components/Header.vue";
 export default {
@@ -39,8 +39,11 @@ export default {
 
   methods: {
     getData() {
+      this.$emit('changeLoad', true)
       this.getRequest("/blog/indexContent", this).then((resp) => {
         this.blog = resp.data;
+      }).finally(() => {
+        this.$emit('changeLoad', false)
       });
     },
   },
@@ -53,7 +56,7 @@ export default {
 
 <style>
 .blog-title {
-  color: #008b8b;
+  
 }
 .fullContent {
   /* margin-top: -20px;
@@ -63,10 +66,20 @@ export default {
 .main-content {
   width: 100%;
 }
+/* .content {
+  background-color: white;
+  padding-left: 10px;
+} */
 .blog-content {
   /* border: 1px solid #F5F5F5	; */
-  padding-left: 10px;
-  background-color: white;
+  /* padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+   padding-top: 5px;
+  background-color: white; */
+}
+.content-html {
+  padding: 10px;
 }
 img {
   max-width: 98%;

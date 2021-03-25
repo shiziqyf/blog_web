@@ -1,12 +1,23 @@
 import axios from 'axios';
 import vue from '../main.js'
+
 // import vue from 'vue'
 
 import {
     Message
 } from 'element-ui';
-axios.defaults.baseURL = 'http://192.168.1.103:90/'
 
+
+
+function load() {
+    loadingInstance = Loading.service({
+        fullscreen: true
+    });
+}
+
+
+// axios.defaults.baseURL = 'http://192.168.1.103:90/'
+axios.defaults.baseURL = 'http://121.4.171.205:90/'
 // 响应拦截器
 axios.interceptors.response.use (
 
@@ -118,4 +129,6 @@ export const getRequest = (url, vue) => {
         }
     });
 }
+
+
 

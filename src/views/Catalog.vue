@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div >
     <div class="catalog">
       <el-row type="flex" justify="center">
         <el-col :span="6" class="hidden-md-and-down"></el-col>
 
         <el-col :span="24">
-          <div class="catalog-main">
+          <div class="catalog-main"  >
             <div
               v-for="catalog in catalogs"
               :key="catalog.id"
@@ -63,7 +63,7 @@
                   :pager-count="5"
                   :total="total"
                   :current-page.sync="nowPage"
-                  :hide-on-single-page="false"
+                  :hide-on-single-page="true"
                 ></el-pagination>
               </el-col>
             </el-row>
@@ -84,6 +84,7 @@ export default {
       total: 0,
       navigatePages: 0,
       nowPage: parseInt(this.$route.params.pageNum),
+    
     };
   },
   watch: {
@@ -97,7 +98,9 @@ export default {
       if (this.nowPage == undefined) {
         this.nowPage = 1;
       }
+      this.$emit('changeLoad', true)
       this.getRequest("/blog/getCatalog?pageNum=" + this.nowPage, this).then(
+         
         (resp) => {
           let data = resp.data;
           this.catalogs = data.list;
@@ -106,7 +109,9 @@ export default {
 
           // this.nowPage = data.pageNum
         }
-      );
+      ).finally(() => {
+         this.$emit('changeLoad', false)
+      });
     },
 
     toBlogDetail(blogId){
@@ -122,11 +127,17 @@ export default {
             this.getData()
           })
       }
-    }
+    },
+
+
+
   },
 
   created() {
+    
+    
     this.getData();
+    
   },
 };
 </script>

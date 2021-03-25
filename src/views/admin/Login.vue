@@ -15,7 +15,7 @@
                 <el-input v-model="username" placeholder="用户名"></el-input>
               </el-form-item>
               <el-form-item label="密码">
-                <el-input v-model="password" placeholder="密码"></el-input>
+                <el-input type="password" v-model="password" placeholder="密码"></el-input>
               </el-form-item>
               <el-form-item>
                 <el-button type="primary" @click="login">登录</el-button>
@@ -45,7 +45,7 @@ export default {
         password: this.password,
       }).then((resp) => {
         this.$store.commit('login',resp.data)
-        this.$router.push('/index')
+        this.$router.push('/index/main')
       });
     },
   },

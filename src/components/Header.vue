@@ -4,7 +4,7 @@
     <div class="title avatar">
       <el-avatar
         :size="100"
-        src="https://z3.ax1x.com/2020/12/28/rTyXa6.jpg"
+        src="/image.png"
       ></el-avatar>
     </div>
 
