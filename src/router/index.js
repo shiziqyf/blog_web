@@ -8,7 +8,7 @@ import Catalog from "../views/Catalog.vue"
 import FullContent from "../views/FullContent.vue"
 import Pigeonhole from "../views/Pigeonhole.vue"
 import AboutMe from "../views/AboutMe.vue"
-const newBlog = () => import('../views/admin/EditBlog.vue')
+const editBlog = () => import('../views/admin/EditBlog.vue')
 const Login = () => import('../views/admin/Login.vue')
 // import newBlog from '../views/admin/EditBlog.vue'
 import errorPage from '../views/404.vue'
@@ -57,8 +57,8 @@ const routes = [
     component: Index,
     children:[
       {
-        path: 'newBlog',
-        component: newBlog
+        path: 'editBlog/:id?',
+        component: editBlog
       },
   
     ]
@@ -88,9 +88,9 @@ const router = new VueRouter({
   routes
 })
 
-router.afterEach((to, from) => {
-  console.log("回到顶部")
-  window.scrollTo(0, 0)
-})
+// router.afterEach((to, from) => {
+//   console.log("回到顶部")
+//   window.scrollTo(0, 0)
+// })
 
 export default router

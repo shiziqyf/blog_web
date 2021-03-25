@@ -17,7 +17,7 @@
     <el-menu-item index="/index/pigeonhole"><span class="item"> 归档</span></el-menu-item>
     <el-menu-item index="/index/aboutMe"><span class="item"> 关于我</span></el-menu-item>
       <div v-if="$store.state.token != null">
-         <el-menu-item index="/admin/newBlog"><span class="item"> 新博客</span></el-menu-item>
+         <el-menu-item index="/admin/editBlog"><span class="item"> 新博客</span></el-menu-item>
          <el-menu-item @click="outLogin"><span class="item"> 退出登录</span></el-menu-item>
       </div>
    

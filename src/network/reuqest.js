@@ -5,7 +5,7 @@ import vue from '../main.js'
 import {
     Message
 } from 'element-ui';
-axios.defaults.baseURL = 'http://192.168.1.102:90/'
+axios.defaults.baseURL = 'http://192.168.1.103:90/'
 
 // 响应拦截器
 axios.interceptors.response.use (
@@ -48,11 +48,12 @@ axios.interceptors.response.use (
                 return Promise.reject(response);
             }
 
-            Message.error('未知错误')
+            Message.error(response.data.message)
             return Promise.reject(response);
 
         } else {
-            Message.error('发生错误，请检查网络')
+            
+            Message.error("发生错误，请检查网络")
             return Promise.reject(response);
 
         }

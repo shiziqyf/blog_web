@@ -19,10 +19,11 @@
     />
     </el-aside>
     <el-main class="main">
+     
       <div class="header hidden-sm-and-up" @click="isShowDriver=true">
-       <i class="el-icon-s-unfold menu-icon"></i>
+       <i class="el-icon-s-unfold menu-icon" ></i>
     </div>
-      <router-view></router-view>
+      <router-view :key="$route.fullPath"></router-view>
     </el-main>
   </el-container>
 </template>
@@ -34,11 +35,15 @@ export default {
   components: {
     Header,
   },
+ 
   data() {
     return {
       isShowDriver: false,
     };
   },
+  methods: {
+     
+  }
 };
 </script>
 
@@ -59,7 +64,7 @@ export default {
   background-color: #F5F5F5	;
   font-size: 150%;
 }
-.drawer{
+.drawer {
   width: 200%;
   text-align: center;
 }
@@ -72,6 +77,10 @@ export default {
 }
 .menu-icon {
   padding-left: 10px;
+}
+#top {
+  /* height: 0;
+  background-color: red; */
 }
 
 </style>
