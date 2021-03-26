@@ -24,24 +24,32 @@ export default {
   },
   methods: {
     getData() {
+      this.$emit('changeLoad', true)
       this.getRequest("/blog/findById?id=" + this.id, this).then((resp) => {
         if(resp.data != null) {
             this.blog = resp.data;
         }
      
+      }).finally(()=> {
+        this.$emit('changeLoad', false)
       });
     },
     save() {
+      this.$emit('changeLoad', true)
       this.blog.content_html = this.content_html;
       this.blog.id = this.id
       if (this.id != undefined) {
         this.postRequest("/blog/changeBlog", this.blog).then((resp) => {
           this.$message.success("修改成功");
-        });
+        }).finally(() => {
+         this.$emit('changeLoad', false)
+      });
       } else {
         this.postRequest("/blog/add", this.blog).then((resp) => {
           this.$message.success("保存成功");
-        });
+        }).finally(() => {
+         this.$emit('changeLoad', false)
+      });
       }
     },
   },
