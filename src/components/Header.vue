@@ -9,7 +9,7 @@
     </div>
 
      <div class="title name-text">
-      <h4>礻子的博客</h4>
+      <h4>我的个人博客</h4>
     </div>
 
     <el-menu-item index="/index/main"><span class="item"> 首页</span></el-menu-item>

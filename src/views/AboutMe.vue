@@ -34,7 +34,8 @@ export default {
     return {
       
       blog: {},
-      contentHtml: '<h1><a id="_0"></a>关于我</h1><ul><li>一个喜欢看电影的程序猿</li><li>一个擅长后端开发的程序猿</li><li>目前正在学习ios开发</li><li>目标成为一名能够养活自己的独立开发者</li></ul>'
+      // contentHtml: '<h1><a id="_0"></a>关于我</h1><ul><li>一个喜欢看电影的程序猿</li><li>一个擅长后端开发的程序猿</li><li>目前正在学习ios开发</li><li>目标成为一名能够养活自己的独立开发者</li></ul>'
+      contentHtml: ''
     };
   },
 
