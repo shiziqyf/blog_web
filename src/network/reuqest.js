@@ -17,12 +17,12 @@ function load() {
 
 
 // axios.defaults.baseURL = 'http://192.168.1.103:90/'
-axios.defaults.baseURL = 'http://121.4.171.205:90/'
+axios.defaults.baseURL = 'https://shizi.link/api/'
 // 响应拦截器
 axios.interceptors.response.use (
-
+   
     response => {
-        
+       
         // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据     
         // 否则的话抛出错误
         if (response.status == 200) {
@@ -129,6 +129,10 @@ export const getRequest = (url, vue) => {
         }
     });
 }
+
+
+
+
 
 
 
